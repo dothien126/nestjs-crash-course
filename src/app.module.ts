@@ -4,9 +4,14 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import config from '../ormconfig';
+import { Employee } from './users/entities/employee.entity';
+import { ContactInfor } from './users/entities/contact-infor.entity';
+import { Task } from './users/entities/task.entity';
+import { Meeting } from './users/entities/meeting.entity';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config)],
+  imports: [TypeOrmModule.forRoot(config),
+  TypeOrmModule.forFeature([Employee, ContactInfor, Task, Meeting])],
   controllers: [AppController],
   providers: [AppService],
 })
