@@ -6,9 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   // Post /login
+  @UseGuards(LocalAuthGuard)
   @Post('login')
-  login(): any{
-    return {}
+  login(@Request() req): any{
+    return req.user;
   }
 
   // Get /protected
